@@ -1,25 +1,22 @@
-# encoding:utf-8
-import os
-
-class Config(object):
+class Config:
 	SECRET_KEY='some string'
 	SQLALCHEMY_TRACK_MODIFICATIONS=False
 	SQLALCHEMY_COMMIT_ON_TEARDOWN=True
+
 	MAIL_SERVER='smtp.163.com'
 	MAIL_PORT=465
 	MAIL_USE_SSL=True
-	MAIL_USERNAME=os.environ.get('MAIL_USERNAME')
-	MAIL_PASSWORD=os.environ.get('MAIL_PASSWORD')
-	FLASKY_ADMIN=os.environ.get('FLASKY_ADMIN')
+	MAIL_USERNAME='bintas@163.com'
+	MAIL_PASSWORD='wj2011go'
+	MAIL_ADMIN='wongi@foxmail.com'
 
 	@staticmethod
 	def init_app(app):
-		pass
+		pass 
 
 class DevConfig(Config):
 	DEBUG=True
-	SQLALCHEMY_DATABASE_URI='mysql+pymysql://root:wj2011go@localhost:3306/hello?charset=utf8mb4'
-	
+	SQLALCHEMY_DATABASE_URI='mysql+pymysql://root:wj2011go@localhost:3306/flasky?charset=utf8mb4'
 
 config={
 	'development':DevConfig,

@@ -1,0 +1,4 @@
+您好 {{ user.username }}，
+
+重置密码链接：
+{{ url_for('auth.reset_password',token=token,_external=True)}}

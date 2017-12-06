@@ -1,11 +1,9 @@
-from flask import render_template
-from flask_mail import Message 
-from . import mail 
-import os
+from flask_mail import Message
+from . import mail
+from flask import current_app,render_template
 
-
-def send_email(to,subject,template,**kwargs):
-	msg=Message(subject,sender=os.environ.get('MAIL_USERNAME'),recipients=[to])
-	msg.body=render_template(template+'.txt',**kwargs)
-	msg.html=render_template(template+'.html',**kwargs)
+def send_email(to,subject,template,**kw):
+	msg=Message(subject,sender=current_app.config['MAIL_USERNAME'],recipients=[to])
+	msg.body=render_template(template+'.txt',**kw)
+	msg.html=render_template(template+'.html',**kw)
 	mail.send(msg)

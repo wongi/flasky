@@ -1,0 +1,4 @@
+你好 {{ user.username }},
+
+点击完成注册
+{{ url_for('auth.confirm',token=token,_external=True) }}
